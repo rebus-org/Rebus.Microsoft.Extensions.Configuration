@@ -20,13 +20,19 @@ namespace Rebus.Config
         {
             if (builder == null) throw new ArgumentNullException(nameof(builder));
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
-            if (path == null) throw new ArgumentNullException(nameof(path));
-
-            var section = configuration.GetSection(path) ?? throw new RebusConfigurationException($"Could not find section with path '{path}' in the current configuration (which was very unexpected, because the configuration library should return an empty section and NOT null when looking for non-existent keys....)");
 
             var mappings = new Dictionary<string, string>();
 
-            section.Bind(mappings);
+            if (path == null)
+            {
+                configuration.Bind(mappings);
+            }
+            else
+            {
+                var section = configuration.GetSection(path) ?? throw new RebusConfigurationException(
+                                  $"Could not find section with path '{path}' in the current configuration (which was very unexpected, because the configuration library should return an empty section and NOT null when looking for non-existent keys....)");
+                section.Bind(mappings);
+            }
 
             SetUpEndpointMappings(mappings, (type, queue) => builder.Map(type, queue));
 

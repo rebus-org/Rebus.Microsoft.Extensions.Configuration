@@ -18,13 +18,29 @@ namespace Rebus.Microsoft.Extensions.Configuration.Tests
     public class CanGetEndpointMappingsFromConfiguration
     {
         [Test]
+        public async Task AddMappingsFromEnvironmentVariables()
+        {
+            Environment.SetEnvironmentVariable("rebus:TestApp.Messages", "some-queue");
+
+            var configuration = new ConfigurationBuilder()
+                .AddEnvironmentVariables()
+                .Build();
+
+            var router = GetRouter(configuration, "rebus");
+
+            Assert.That(await router.GetDestinationFor<FirstMessage>(), Is.EqualTo("some-queue"));
+            Assert.That(await router.GetDestinationFor<SecondMessage>(), Is.EqualTo("some-queue"));
+            Assert.That(await router.GetDestinationFor<ThirdMessage>(), Is.EqualTo("some-queue"));
+        }
+
+        [Test]
         public async Task AddMappingsForTypes()
         {
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile(Path.Combine(AppContext.BaseDirectory, "Data", "appsettings_types.json"))
                 .Build();
 
-            var router = GetRouter(configuration);
+            var router = GetRouter(configuration, "EndpointMappings");
 
             Assert.That(await router.GetDestinationFor<FirstMessage>(), Is.EqualTo("some-queue"));
             Assert.That(await router.GetDestinationFor<SecondMessage>(), Is.EqualTo("another-queue"));
@@ -38,7 +54,7 @@ namespace Rebus.Microsoft.Extensions.Configuration.Tests
                 .AddJsonFile(Path.Combine(AppContext.BaseDirectory, "Data", "appsettings_assembly.json"))
                 .Build();
 
-            var router = GetRouter(configuration);
+            var router = GetRouter(configuration, "EndpointMappings");
 
             Assert.That(await router.GetDestinationFor<FirstMessage>(), Is.EqualTo("some-queue"));
             Assert.That(await router.GetDestinationFor<SecondMessage>(), Is.EqualTo("some-queue"));
@@ -52,7 +68,7 @@ namespace Rebus.Microsoft.Extensions.Configuration.Tests
                 .AddJsonFile(Path.Combine(AppContext.BaseDirectory, "Data", "appsettings_wrong_type.json"))
                 .Build();
 
-            var exception = Assert.Throws<RebusConfigurationException>(() => GetRouter(configuration));
+            var exception = Assert.Throws<RebusConfigurationException>(() => GetRouter(configuration, "EndpointMappings"));
 
             Console.WriteLine(exception);
         }
@@ -64,12 +80,12 @@ namespace Rebus.Microsoft.Extensions.Configuration.Tests
                 .AddJsonFile(Path.Combine(AppContext.BaseDirectory, "Data", "appsettings_wrong_assembly.json"))
                 .Build();
 
-            var exception = Assert.Throws<RebusConfigurationException>(() => GetRouter(configuration));
+            var exception = Assert.Throws<RebusConfigurationException>(() => GetRouter(configuration, "EndpointMappings"));
 
             Console.WriteLine(exception);
         }
 
-        static IRouter GetRouter(IConfigurationRoot configuration)
+        static IRouter GetRouter(IConfigurationRoot configuration, string path = null)
         {
             IRouter router = null;
 
@@ -79,7 +95,7 @@ namespace Rebus.Microsoft.Extensions.Configuration.Tests
                     .Transport(t => t.UseInMemoryTransport(new InMemNetwork(), "test-queue"))
                     .Routing(r =>
                     {
-                        r.TypeBased().AddMappingsFromConfiguration(configuration, "EndpointMappings");
+                        r.TypeBased().AddMappingsFromConfiguration(configuration, path);
 
                         r.Decorate(c => router = c.Get<IRouter>());
                     })

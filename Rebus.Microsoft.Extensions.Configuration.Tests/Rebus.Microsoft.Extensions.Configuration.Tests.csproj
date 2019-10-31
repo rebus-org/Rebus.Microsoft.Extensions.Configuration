@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="microsoft.extensions.configuration.EnvironmentVariables" Version="3.0.0" />
     <PackageReference Include="microsoft.extensions.configuration.json" Version="3.0.0" />
     <PackageReference Include="microsoft.net.test.sdk" Version="16.3.0" />
     <PackageReference Include="nunit" Version="3.12.0" />
