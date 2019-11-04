@@ -13,6 +13,7 @@
     <Copyright>Copyright 2019</Copyright>
     <PackageTags>rebus microsoft extensions configuration</PackageTags>
     <PackageIconUrl>https://github.com/mookid8000/Rebus/raw/master/artwork/little_rebusbus2_copy-200x200.png</PackageIconUrl>
+    <PackageDescription>Microsoft.Extensions.Configuration-based endpoint mappings configuration for Rebus</PackageDescription>
     <RepositoryUrl>https://github.com/rebus-org/Rebus.Microsoft.Extensions.Configuration</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
