@@ -5,7 +5,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Rebus</RootNamespace>
     <AssemblyName>Rebus.Microsoft.Extensions.Configuration</AssemblyName>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net5.0</TargetFrameworks>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Authors>mookid8000</Authors>
     <PackageLicenseUrl></PackageLicenseUrl>
@@ -51,9 +51,22 @@
     <Folder Include="Microsoft\Extensions\Configuration\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="microsoft.extensions.configuration" Version="3.0.0" />
-    <PackageReference Include="microsoft.extensions.configuration.binder" Version="3.0.0" />
-    <PackageReference Include="rebus" Version="5.4.0" />
+    <PackageReference Include="rebus" Version="[5.4.0,)" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+    <PackageReference Include="microsoft.extensions.configuration" Version="[2.0.0,3)" />
+    <PackageReference Include="microsoft.extensions.configuration.binder" Version="[2.0.0,3)" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.1' ">
+    <PackageReference Include="microsoft.extensions.configuration" Version="[3.0.0,5)" />
+    <PackageReference Include="microsoft.extensions.configuration.binder" Version="[3.0.0,5)" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net5.0' ">
+    <PackageReference Include="microsoft.extensions.configuration" Version="[5.0.0-rc.2.20475.5,6)" />
+    <PackageReference Include="microsoft.extensions.configuration.binder" Version="[5.0.0-rc.2.20475.5,6)" />
   </ItemGroup>
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="$(ProjectDir)..\scripts\patch_assemblyinfo.cmd $(ProjectDir)" />
