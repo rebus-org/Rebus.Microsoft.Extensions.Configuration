@@ -10,7 +10,7 @@
     <Authors>mookid8000</Authors>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://rebus.fm/what-is-rebus/</PackageProjectUrl>
-    <Copyright>Copyright 2019</Copyright>
+    <Copyright>Copyright Rebus FM ApS 2012</Copyright>
     <PackageTags>rebus microsoft extensions configuration</PackageTags>
     <PackageIconUrl></PackageIconUrl>
     <PackageDescription>Microsoft.Extensions.Configuration-based endpoint mappings configuration for Rebus</PackageDescription>
