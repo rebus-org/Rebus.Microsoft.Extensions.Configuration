@@ -25,7 +25,26 @@ Let's say you have a configuration file, `appsettings.json`, which looks like th
 }
 ```
 
-Since we've configured our build to include the configuration file with our application, we can load it up like this;
+If you're using Microsoft's generic host, then you should include the [Rebus.ServiceProvider](https://www.nuget.org/packages/Rebus.ServiceProvider) package too, because then you can configure your bus instance simply like this:
+
+```csharp
+var host = Host.CreateDefaultBuilder()
+    .ConfigureServices((context, services) =>
+    {
+        services.AddRebus(
+            configure => configure
+                .Transport(t => t.UseInMemoryTransport(new InMemNetwork(), "my-queue"))
+                .Routing(r => r.TypeBased().AddMappingsFromConfiguration(context.Configuration, "Endpoints"))
+        );
+    })
+    .Build();
+
+host.Run();
+```
+
+If you are in place where the generic host is not available, you can still use the package in a slightly more manual way.
+
+Start out by loading up your configuration file like this:
 
 ```csharp
 // build configuration
