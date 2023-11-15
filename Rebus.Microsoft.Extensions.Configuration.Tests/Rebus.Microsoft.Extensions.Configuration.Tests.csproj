@@ -5,15 +5,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="microsoft.extensions.configuration" Version="7.0.0" />
-		<PackageReference Include="microsoft.extensions.configuration.environmentvariables" Version="7.0.0" />
-		<PackageReference Include="microsoft.extensions.configuration.json" Version="7.0.0" />
-		<PackageReference Include="microsoft.extensions.hosting" Version="7.0.1" />
-		<PackageReference Include="microsoft.net.test.sdk" Version="16.3.0" />
-		<PackageReference Include="nunit" Version="3.12.0" />
-		<PackageReference Include="nunit3testadapter" Version="3.15.1" />
-		<PackageReference Include="rebus" Version="8.0.0-alpha01" />
-		<PackageReference Include="rebus.serviceprovider" Version="10.0.0-alpha01" />
+		<PackageReference Include="microsoft.extensions.configuration" Version="8.0.0" />
+		<PackageReference Include="microsoft.extensions.configuration.environmentvariables" Version="8.0.0" />
+		<PackageReference Include="microsoft.extensions.configuration.json" Version="8.0.0" />
+		<PackageReference Include="microsoft.extensions.hosting" Version="8.0.0" />
+		<PackageReference Include="microsoft.net.test.sdk" Version="17.8.0" />
+		<PackageReference Include="nunit" Version="3.14.0" />
+		<PackageReference Include="nunit3testadapter" Version="4.5.0" />
+		<PackageReference Include="rebus" Version="8.0.1" />
+		<PackageReference Include="rebus.serviceprovider" Version="10.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>

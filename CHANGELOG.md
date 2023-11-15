@@ -6,5 +6,5 @@
 ## 0.0.4-a1
 * Add additional targets for .NET Standard 2.1 and .NET 5 - thanks [dariogriffo]
 
-## 1.0.0-alpha01
+## 1.0.0
 * Update to Rebus 8
