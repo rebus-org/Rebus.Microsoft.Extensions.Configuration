@@ -62,7 +62,7 @@ public static class RoutingConfigurationExtensions
 
                 if (messageType == null)
                 {
-                    throw new RebusConfigurationException($@"Could not find the message type {typeName}. If you choose to map a specific message type, please ensure that the type is available for Rebus to load. This requires that the assembly can be found in Rebus' current runtime directory, that the type is available, and that any (of the optional) version and key requirements are matched");
+                    throw new RebusConfigurationException($"Could not find the message type {typeName}. If you choose to map a specific message type, please ensure that the type is available for Rebus to load. This requires that the assembly can be found in Rebus' current runtime directory, that the type is available, and that any (of the optional) version and key requirements are matched");
                 }
 
                 mappingFunction(messageType, element.Value);

@@ -8,3 +8,7 @@
 
 ## 1.0.0
 * Update to Rebus 8
+
+## 1.1.0
+* Extend dep version range to include v9 to support .NET 9
+* Update Rebus dependency to 8.6.1

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0</TargetFrameworks>
+		<TargetFrameworks>net9.0</TargetFrameworks>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -12,7 +12,7 @@
 		<PackageReference Include="microsoft.net.test.sdk" Version="17.8.0" />
 		<PackageReference Include="nunit" Version="3.14.0" />
 		<PackageReference Include="nunit3testadapter" Version="4.5.0" />
-		<PackageReference Include="rebus" Version="8.0.1" />
+		<PackageReference Include="rebus" Version="8.6.1" />
 		<PackageReference Include="rebus.serviceprovider" Version="10.0.0" />
 	</ItemGroup>
 
@@ -22,16 +22,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="Data\appsettings_assembly.json">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Update="Data\appsettings_wrong_assembly.json">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Update="Data\appsettings_wrong_type.json">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Update="Data\appsettings_types.json">
+		<None Update="Data\*.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
