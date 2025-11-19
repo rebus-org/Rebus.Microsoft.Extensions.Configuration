@@ -12,3 +12,10 @@
 ## 1.1.0
 * Extend dep version range to include v9 to support .NET 9
 * Update Rebus dependency to 8.6.1
+
+## 1.2.0
+* Extend allowed version ranges - thanks [Freddie-H]
+
+--
+
+[Freddie-H]: https://github.com/Freddie-H
