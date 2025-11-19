@@ -28,7 +28,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="rebus" Version="8.6.1" />
-		<PackageReference Include="microsoft.extensions.configuration" Version="[6.0.0, 10)" />
-		<PackageReference Include="microsoft.extensions.configuration.binder" Version="[6.0.0, 10)" />
+		<PackageReference Include="microsoft.extensions.configuration" Version="[6.0.0, 11)" />
+		<PackageReference Include="microsoft.extensions.configuration.binder" Version="[6.0.0, 11)" />
 	</ItemGroup>
 </Project>
